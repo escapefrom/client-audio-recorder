@@ -6,7 +6,7 @@ namespace AudioDialogRecorder.Model
 {
     public class RecordAudioRequest
     {
-        public bool IsManager;
+        public string UserSourceId;
         public DateTime StartDateTime;
         public byte[] Audio;
     }

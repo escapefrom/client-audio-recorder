@@ -9,7 +9,7 @@ namespace AudioDialogRecorder.Core.Sender
 {
     public class RequestSender
     {
-        private const string BASE_URL = @"https://36c0a55c-85ca-46fe-8494-5944d1398573.mock.pstmn.io";
+        private const string BASE_URL = @"http://localhost:5000/session";
         private FlurlClient _flurClient;
 
         public RequestSender(string baseUrl = BASE_URL)
@@ -18,9 +18,20 @@ namespace AudioDialogRecorder.Core.Sender
         }
 
         public async Task<object> SendPost<T>(string path, T data)
-            => await _flurClient
-                .Request(path)
-                .PostJsonAsync(data)
-                .ReceiveJson<object>();
+        {
+            try
+            {
+                return await _flurClient
+                    .Request(path)
+                    .PostJsonAsync(data)
+                    .ReceiveJson<object>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return null;
+        }
     }
 }

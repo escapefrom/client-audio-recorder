@@ -7,7 +7,7 @@ namespace AudioDialogRecorder.Core.Sender
 {
     public class ManagerAudioSender
     {
-        private const string PATH = "managerAudio";
+        private const string PATH = "send_audio";
         private RequestSender _requestSender;
 
         public ManagerAudioSender()
@@ -17,7 +17,12 @@ namespace AudioDialogRecorder.Core.Sender
 
         public object SendAudio(byte[] data)
             => _requestSender
-                .SendPost(PATH, new RecordAudioRequest { IsManager = true, StartDateTime = DateTime.Now, Audio = data })
+                .SendPost(PATH, new RecordAudioRequest
+                {
+                    UserSourceId = "Admin",
+                    StartDateTime = DateTime.Now,
+                    Audio = data
+                })
                 .Result;
     }
 }
