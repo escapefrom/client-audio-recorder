@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="NAudio.Core" Version="2.0.0" />
+    <PackageReference Include="VisioForge.DotNet.Core.TRIAL" Version="14.2.6" />
+  </ItemGroup>
+
+</Project>
