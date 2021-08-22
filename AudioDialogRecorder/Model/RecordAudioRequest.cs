@@ -9,6 +9,6 @@ namespace AudioDialogRecorder.Model
         public string ChatSourceId;
         public string UserSourceId;
         public DateTime StartDateTime;
-        public byte[] Audio;
+        public byte[] AudioData;
     }
 }

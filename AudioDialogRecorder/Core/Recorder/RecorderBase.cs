@@ -7,7 +7,7 @@ namespace AudioDialogRecorder.Core.Recorder
 {
     public class RecorderBase
     {
-        protected const int SAMPLE_RATE = 44100;
+        protected const int SAMPLE_RATE = 8000;
         protected const int CHANNELS = 2;
         protected const int BITS_PER_SAMPLE = 16;
         protected const int BLOCK_ALIGN = CHANNELS * (BITS_PER_SAMPLE / 8);

@@ -7,7 +7,7 @@ namespace AudioDialogRecorder.Core.Sender
 {
     public class ClientAudioSender
     {
-        private const string PATH = "send_audio";
+        private const string PATH = "send_audio_";
         private RequestSender _requestSender;
         private GlobalSettings _globalSettings;
 
@@ -24,7 +24,7 @@ namespace AudioDialogRecorder.Core.Sender
                     ChatSourceId = _globalSettings.ChatSourceId ?? "Chat",
                     UserSourceId = _globalSettings.UserSourceId ?? "Client",
                     StartDateTime = DateTime.Now,
-                    Audio = data
+                    AudioData = data
                 })
                 .Result;
     }

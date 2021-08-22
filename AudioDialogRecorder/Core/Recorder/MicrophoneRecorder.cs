@@ -1,6 +1,7 @@
 ﻿using AudioDialogRecorder.Core.Sender;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using VisioForge.Shared.NAudio.Wave;
@@ -13,6 +14,10 @@ namespace AudioDialogRecorder.Core.Recorder
 
         private ManagerAudioSender _managerAudioSender = null;
         private WaveInEvent _waveIn = null;
+        private List<byte> buffer = new List<byte>();
+
+        private const int LAST_MESSAGES = 1000;
+        private const double COEF = 0.8;
 
         #endregion Private members
 
@@ -52,9 +57,11 @@ namespace AudioDialogRecorder.Core.Recorder
 
         private void captureDataAvailableHandler(object? sender, WaveInEventArgs args)
         {
-            if (!args.Buffer.All((bt) => bt == 'A'))
+            buffer.AddRange(args.Buffer);
+            if (args.Buffer.TakeLast(LAST_MESSAGES).Count((bt) => bt <'A') > COEF * LAST_MESSAGES)
             {
-                _managerAudioSender.SendAudio(args.Buffer);
+                _managerAudioSender.SendAudio(buffer.ToArray());
+                buffer.Clear();
             }
         }
 

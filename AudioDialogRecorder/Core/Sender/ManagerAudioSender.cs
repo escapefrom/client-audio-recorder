@@ -1,6 +1,7 @@
 ﻿using AudioDialogRecorder.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AudioDialogRecorder.Core.Sender
@@ -21,10 +22,10 @@ namespace AudioDialogRecorder.Core.Sender
             => _requestSender
                 .SendPost(_globalSettings?.UrlConfig.ManagerPointUrl ?? PATH, new RecordAudioRequest
                 {
-                    ChatSourceId = _globalSettings.ChatSourceId ?? "Chat",
-                    UserSourceId = _globalSettings.UserSourceId ?? "Admin",
+                    ChatSourceId = _globalSettings.ChatSourceId ?? "AudioChat",
+                    UserSourceId = _globalSettings.UserSourceId ?? "SomeAudio",
                     StartDateTime = DateTime.Now,
-                    Audio = data
+                    AudioData = data
                 })
                 .Result;
     }

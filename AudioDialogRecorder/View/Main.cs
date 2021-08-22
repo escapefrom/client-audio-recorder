@@ -36,11 +36,21 @@ namespace AudioDialogRecorder.View
         {
             if (!string.IsNullOrEmpty(cliendIdTextBox.Text))
             {
-                _globalSettings.ChatSourceId = _globalSettings.UserSourceId = cliendIdTextBox.Text;
+                _globalSettings.UserSourceId = _globalSettings.UserSourceId = cliendIdTextBox.Text;
             }
             else
             {
                 cliendIdTextBox.Text = _globalSettings.UserSourceId;
+            }
+            
+            
+            if (!string.IsNullOrEmpty(chatIdTextBox.Text))
+            {
+                _globalSettings.ChatSourceId = _globalSettings.ChatSourceId = chatIdTextBox.Text;
+            }
+            else
+            {
+                chatIdTextBox.Text = _globalSettings.UserSourceId;
             }
 
             _speakerRecorder.StartRecording();
@@ -48,6 +58,7 @@ namespace AudioDialogRecorder.View
             startButton.Enabled = false;
             endButton.Enabled = true;
             cliendIdTextBox.Enabled = false;
+            chatIdTextBox.Enabled = false;
         }
 
         private void EndClick(object sender, EventArgs e)
@@ -57,6 +68,12 @@ namespace AudioDialogRecorder.View
             startButton.Enabled = true;
             endButton.Enabled = false;
             cliendIdTextBox.Enabled = true;
+            chatIdTextBox.Enabled = true;
+        }
+
+        private void chatIdLabel_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

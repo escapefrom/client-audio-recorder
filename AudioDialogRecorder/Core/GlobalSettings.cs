@@ -15,8 +15,8 @@ namespace AudioDialogRecorder.Core
         private GlobalSettings()
         {
             var rnd = new Random(DateTime.Now.Minute * DateTime.Now.Second * DateTime.Now.Millisecond);
-            ChatSourceId = rnd.Next().ToString();
-            UserSourceId = rnd.Next().ToString();
+            ChatSourceId = "Audio-123";
+            UserSourceId = "SomeAudio";
         }
 
         public static GlobalSettings GetInstance()
