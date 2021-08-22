@@ -68,6 +68,8 @@ namespace AudioDialogRecorder.View
         {
             this.startButton = new System.Windows.Forms.Button();
             this.endButton = new System.Windows.Forms.Button();
+            this.cliendIdLabel = new System.Windows.Forms.Label();
+            this.cliendIdTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // startButton
@@ -91,16 +93,35 @@ namespace AudioDialogRecorder.View
             this.endButton.UseVisualStyleBackColor = true;
             this.endButton.Click += new System.EventHandler(this.EndClick);
             // 
+            // cliendIdLabel
+            // 
+            this.cliendIdLabel.AutoSize = true;
+            this.cliendIdLabel.Location = new System.Drawing.Point(12, 76);
+            this.cliendIdLabel.Name = "cliendIdLabel";
+            this.cliendIdLabel.Size = new System.Drawing.Size(65, 15);
+            this.cliendIdLabel.TabIndex = 2;
+            this.cliendIdLabel.Text = "ID клиента";
+            // 
+            // cliendIdTextBox
+            // 
+            this.cliendIdTextBox.Location = new System.Drawing.Point(12, 94);
+            this.cliendIdTextBox.Name = "cliendIdTextBox";
+            this.cliendIdTextBox.Size = new System.Drawing.Size(188, 23);
+            this.cliendIdTextBox.TabIndex = 3;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 83);
+            this.ClientSize = new System.Drawing.Size(212, 126);
+            this.Controls.Add(this.cliendIdTextBox);
+            this.Controls.Add(this.cliendIdLabel);
             this.Controls.Add(this.endButton);
             this.Controls.Add(this.startButton);
             this.Name = "Main";
             this.Text = "ADR";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,6 +129,8 @@ namespace AudioDialogRecorder.View
 
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button endButton;
+        private System.Windows.Forms.Label cliendIdLabel;
+        private System.Windows.Forms.TextBox cliendIdTextBox;
     }
 }
 

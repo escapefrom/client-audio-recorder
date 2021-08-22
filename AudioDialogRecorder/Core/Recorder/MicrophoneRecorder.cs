@@ -18,9 +18,9 @@ namespace AudioDialogRecorder.Core.Recorder
 
         #region Ctors
 
-        public MicrophoneRecorder()
+        public MicrophoneRecorder(GlobalSettings globalSettings)
         {
-            _managerAudioSender = new ManagerAudioSender();
+            _managerAudioSender = new ManagerAudioSender(globalSettings);
             _waveIn = new WaveInEvent();
             _waveIn.WaveFormat = createLPCMFormat();
             addEventHandlers();

@@ -9,17 +9,20 @@ namespace AudioDialogRecorder.Core.Sender
     {
         private const string PATH = "send_audio";
         private RequestSender _requestSender;
+        private GlobalSettings _globalSettings;
 
-        public ManagerAudioSender()
+        public ManagerAudioSender(GlobalSettings globalSettings)
         {
-            _requestSender = new RequestSender();
+            _requestSender = new RequestSender(globalSettings);
+            _globalSettings = globalSettings;
         }
 
         public object SendAudio(byte[] data)
             => _requestSender
-                .SendPost(PATH, new RecordAudioRequest
+                .SendPost(_globalSettings?.UrlConfig.ManagerPointUrl ?? PATH, new RecordAudioRequest
                 {
-                    UserSourceId = "Admin",
+                    ChatSourceId = _globalSettings.ChatSourceId ?? "Chat",
+                    UserSourceId = _globalSettings.UserSourceId ?? "Admin",
                     StartDateTime = DateTime.Now,
                     Audio = data
                 })

@@ -16,9 +16,9 @@ namespace AudioDialogRecorder.Core.Recorder
 
         #region Ctors
 
-        public SpeakerRecorder()
+        public SpeakerRecorder(GlobalSettings globalSettings)
         {
-            _clientAudioSender = new ClientAudioSender();
+            _clientAudioSender = new ClientAudioSender(globalSettings);
             _captureInstance = new WasapiLoopbackCapture();
             //_captureInstance.WaveFormat = createLPCMFormat();
             addEventHandlers();

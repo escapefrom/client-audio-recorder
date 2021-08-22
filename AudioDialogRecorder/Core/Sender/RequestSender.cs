@@ -12,9 +12,9 @@ namespace AudioDialogRecorder.Core.Sender
         private const string BASE_URL = @"http://localhost:5000/session";
         private FlurlClient _flurClient;
 
-        public RequestSender(string baseUrl = BASE_URL)
+        public RequestSender(GlobalSettings globalSettings)
         {
-            _flurClient = new FlurlClient(baseUrl);
+            _flurClient = new FlurlClient(globalSettings?.UrlConfig.ServerUrl ?? BASE_URL);
         }
 
         public async Task<object> SendPost<T>(string path, T data)
